@@ -1,12 +1,14 @@
 import subprocess as sp
+import os
 import FindZNNCLI
 
 
-def versionZNN():
-    pathZNN = FindZNNCLI.findZNN()
-    pathZNN = pathZNN.replace('\\', '\\\\')
-    cliReturn = sp.getoutput(pathZNN + ' version')
-    return(cliReturn)
+def version():
+    pathznn = FindZNNCLI.findznn()
+    pathznn = pathznn.replace(os.path.sep, os.path.sep * 2)
+    clireturn = sp.getoutput(pathznn + 'znn-cli version')
+    return clireturn
+
 
 if __name__ == '__main__':
-    print(versionZNN())
+    print(version())
